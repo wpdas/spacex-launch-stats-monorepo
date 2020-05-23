@@ -1,5 +1,7 @@
 # SpaceX Launch Stats - Monorepo [Server and Client]
 
+Development in progress...
+
 This is an experimental Monorepo project developed using technologies like NodeJS, React, GraphQL, TypeScript, Express and others. The app works handling with SpaceX program data.
 
 **Code Quality Tools:** ESLint, Prettier <br>
