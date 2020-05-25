@@ -5,6 +5,7 @@ import schema from './schema';
 
 const app = express();
 
+// Route with graphql content
 app.use(
   '/graphql',
   graphqlHTTP({
@@ -13,7 +14,7 @@ app.use(
   }),
 );
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.SERVER_PORT || 5000;
 
 // eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
