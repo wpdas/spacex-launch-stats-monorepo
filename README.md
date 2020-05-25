@@ -16,17 +16,21 @@ The `ts-node` is the guy who run .ts files directly without the necessity of tra
 
 ### Root:
 
-- **docker-compose.yml:** Docker compose configuration for container/service;
+- **.github:** Github configurations like workflow (Github Actions). Used for CI in this project;
 
 - **.vscode:** All the necessary configuration for VSCode IDE is placed here. New IDEs can be supported by adding new config files;
+
+- **.env:** Environment file (must be privated for real projects);
+
+- **.prettierrc.js:** Prettier rules. This is used as a code formatter;
+
+- **docker-compose.yml:** Docker compose configuration for container/service;
 
 - **package.json:** This file holds all the necessary scripts for the project, can call scripts from sub-packages;
 
 ### Server:
 
 - **Dockerfile:** File containing instructions used when a server container is created;
-
-- **.prettierrc.js:** Prettier rules. This is used as a code formatter;
 
 - **.eslintignore, .eslintrc.json, eslint-tsconfig.json:** ESlint configuration for IDE and for the code itself. **.eslintrc.json** file contain the optinal rules and _extends_ the necessary eslint base configuration (created by my, you can edit your base preferences). The **eslint-tsconfig.json** file has all the necessary plugins and extends needed in order to have a good code type for this project. It'll connect the IDE with the eslint rules as well as prettier rules. So, eslint and prettier are connected;
 
