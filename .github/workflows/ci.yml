@@ -26,7 +26,7 @@ jobs:
           node-version: 12.16.0
 
       - name: Install dependencies
-        run: yarn
+        run: cd server && yarn
 
       - name: Linting
         run: yarn es-lint
