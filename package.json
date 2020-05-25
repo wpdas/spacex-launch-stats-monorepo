@@ -1,7 +1,7 @@
 {
   "name": "spacex-launch-stats",
   "version": "1.0.0",
-  "description": "App that lists SpaceX launch missions",
+  "description": "Experimental Monorepo project - SpaceX Launch Stats",
   "author": "Wenderson Pires da Silva",
   "scripts": {
     "server": "cd server && yarn server",

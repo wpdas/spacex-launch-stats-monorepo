@@ -1,7 +1,7 @@
 {
   "name": "spacex-launch-stats-server",
   "version": "1.0.0",
-  "description": "App that lists SpaceX launch missions - Server",
+  "description": "Server",
   "author": "Wenderson Pires da Silva",
   "license": "MIT",
   "scripts": {
