@@ -1,4 +1,4 @@
-![](https://github.com/Wpdas/spacex-launch-stats-monorepo/.github/workflows/ci/badge.svg)
+![](https://github.com/Wpdas/spacex-launch-stats-monorepo/workflows/ci/badge.svg)
 
 # SpaceX Launch Stats - Monorepo [Server and Client]
 
