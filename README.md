@@ -36,34 +36,27 @@ This is an experimental Monorepo project. The app works handling SpaceX program 
 
 - **./src:** The main server source.
 
-## Commands
+## Commands (using Docker Compose)
 
-### Without Docker
-
-Run server:
-
-```sh
-yarn server
-```
-
-Run server and watch files (this is useful while developing):
-
-```sh
-yarn server:watch
-```
-
-Run lint throughout the project:
-
-```sh
-yarn es-lint
-```
-
-### With Docker Compose (basic commands)
+- Server will run on port 5000: http://localhost:5000
+- Client will run on port 80: http://localhost:80
 
 Create and start all containers/services
 
 ```sh
 docker-compose up --build
+```
+
+Start all containers/services
+
+```sh
+docker-compose up
+```
+
+Stop all containers/services
+
+```sh
+docker-compose stop
 ```
 
 Check the complete docker-compose commands:
