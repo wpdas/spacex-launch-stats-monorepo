@@ -1,4 +1,4 @@
 {
-  "ext": "ts, graphql",
+  "ext": "ts",
   "exec": "yarn server"
 }

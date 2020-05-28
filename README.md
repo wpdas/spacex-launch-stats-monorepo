@@ -4,9 +4,9 @@
 
 Development in progress...
 
-This is an experimental Monorepo project developed using technologies like Docker, NodeJS, React, GraphQL, TypeScript, Express and others. The app works handling with SpaceX program data.
+This is an experimental Monorepo project. The app works handling SpaceX program data.
 
-**Stack:** TypeScript, NodeJS, Express, GraphQL, Apollo, Nodemon, Docker, ESLint, Prettier, Github Actions
+**Stack:** TypeScript, React, NodeJS, Express, GraphQL, Apollo, Nodemon, Jest, Docker, ESLint, Prettier, Github Actions
 
 ## File Details
 
@@ -36,34 +36,27 @@ This is an experimental Monorepo project developed using technologies like Docke
 
 - **./src:** The main server source.
 
-## Commands
+## Commands (using Docker Compose)
 
-### Without Docker
-
-Run server:
-
-```sh
-yarn server
-```
-
-Run server and watch files (this is useful while developing):
-
-```sh
-yarn server:watch
-```
-
-Run lint throughout the project:
-
-```sh
-yarn es-lint
-```
-
-### With Docker Compose (basic commands)
+- Server will run on port 5000: http://localhost:5000
+- Client will run on port 80: http://localhost:80
 
 Create and start all containers/services
 
 ```sh
 docker-compose up --build
+```
+
+Start all containers/services
+
+```sh
+docker-compose up
+```
+
+Stop all containers/services
+
+```sh
+docker-compose stop
 ```
 
 Check the complete docker-compose commands:
@@ -81,6 +74,93 @@ After run the server, go to http://localhost:5000/graphql to access the GraphiQL
 ## Good to know
 
 The `ts-node` is the guy who run .ts files directly without the necessity of transpile files for .js (it's done internally) and the `tsconfig-paths` one is for handler with the `baseUrl` property from tsconfig.json files. The IDE handles pretty well this configuration, however, when using ts-node, things get weird and the baseUrl can not be recognized by only ts-node. Here is where tsconfig-paths come along in order to fix this.
+
+**ESLint for server** is configured using the resources below:
+
+Needed modules:
+
+```json
+"@typescript-eslint/eslint-plugin": "^3.0.0",
+"@typescript-eslint/parser": "^3.0.0",
+"eslint": "^7.1.0",
+"eslint-config-prettier": "^6.11.0",
+"eslint-plugin-prettier": "^3.1.3",
+"prettier": "^2.0.5",
+```
+
+And the `eslint-tsconfig.json` to be extended by eslint:
+
+```json
+{
+  "env": { "node": true },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "project": ["tsconfig.json"],
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "settings": {}
+}
+```
+
+**ESLint for web (React)** is configured using eslint-config-airbnb-typescript with react support. See more here: https://www.npmjs.com/package/eslint-config-airbnb-typescript
+
+Needed modules:
+
+```json
+"@typescript-eslint/eslint-plugin": "^2.24.0",
+"@typescript-eslint/parser": "^3.0.2",
+"eslint": "^6.8.0",
+"eslint-config-airbnb-typescript": "^7.2.1",
+"eslint-config-prettier": "^6.11.0",
+"eslint-plugin-import": "^2.20.1",
+"eslint-plugin-jsx-a11y": "^6.2.3",
+"eslint-plugin-prettier": "^3.1.3",
+"eslint-plugin-react": "^7.19.0",
+"eslint-plugin-react-hooks": "^2.5.0",
+"prettier": "^2.0.5"
+```
+
+And the `eslint-tsconfig.json` to be extended by eslint:
+
+```json
+{
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "project": ["tsconfig.json"],
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
+```
 
 ## Author
 
