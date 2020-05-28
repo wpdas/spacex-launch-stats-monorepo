@@ -3,10 +3,5 @@
   "version": "1.0.0",
   "description": "Experimental Monorepo project - SpaceX Launch Stats",
   "author": "Wenderson Pires da Silva",
-  "scripts": {
-    "server": "cd server && yarn server",
-    "server:watch": "cd server && yarn server:watch",
-    "es-lint": "cd server && yarn es-lint"
-  },
   "license": "MIT"
 }

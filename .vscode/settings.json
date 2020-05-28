@@ -1,4 +1,4 @@
 {
   "deno.enable": false,
-  "eslint.workingDirectories": ["./server"]
+  "eslint.workingDirectories": ["./server", "./web"]
 }

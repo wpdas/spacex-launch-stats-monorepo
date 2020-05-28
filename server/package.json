@@ -5,13 +5,15 @@
   "author": "Wenderson Pires da Silva",
   "license": "MIT",
   "scripts": {
-    "server": "ts-node -r tsconfig-paths/register --project tsconfig.json src/index.ts",
+    "server": "NODE_ENV=development && ts-node -r tsconfig-paths/register --project tsconfig.json src/index.ts",
     "server:watch": "nodemon",
-    "es-lint": "eslint . --ext .ts --quiet"
+    "server:prod": "NODE_ENV=production && ts-node -r tsconfig-paths/register --project tsconfig.json src/index.ts",
+    "lint": "eslint . --ext .ts --quiet"
   },
   "dependencies": {
     "apollo-server-express": "^2.13.1",
     "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "lodash": "^4.17.15"
