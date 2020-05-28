@@ -1,18 +1,16 @@
 import express from 'express';
-import graphqlHTTP from 'express-graphql';
+import { ApolloServer } from 'apollo-server-express';
 
-import schema from './schema';
+import { schemas } from './graphql-structure';
 
 const app = express();
 
-// Route with graphql content
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  }),
-);
+const apolloServer = new ApolloServer({
+  schema: schemas,
+});
+
+// Add graphql apollo server middleware to express app
+apolloServer.applyMiddleware({ app });
 
 const PORT = process.env.SERVER_PORT || 5000;
 

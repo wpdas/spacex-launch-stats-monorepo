@@ -23,10 +23,10 @@ export async function getAllRockets(): Promise<GetAllRocketsResponse> {
 // Get one rocket
 type GetOneRocketResponse = IRocket | null;
 export async function getOneRocket(
-  rockedId: string,
+  rocketId: string,
 ): Promise<GetOneRocketResponse> {
   const { statusText, data: rocket } = await Api.get<IServerRocket>(
-    `/rockets/${rockedId}`,
+    `/rockets/${rocketId}`,
   );
 
   if (statusText !== 'OK') {
