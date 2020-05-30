@@ -1,18 +1,18 @@
 import Api from './setup';
-import { IServerLaunch } from './serverInterfaces';
-import { ILaunch, IRocket } from './apiInterfaces';
+import { ServerLaunch } from './server-interfaces/';
+import { LaunchType, RocketType } from 'graphql-types/';
 
 // Get all launches
-type GetAllLaunchesResponse = Array<ILaunch> | [];
+type GetAllLaunchesResponse = Array<LaunchType> | [];
 export async function getAllLaunches(): Promise<GetAllLaunchesResponse> {
-  const { statusText, data } = await Api.get<Array<IServerLaunch>>('/launches');
+  const { statusText, data } = await Api.get<Array<ServerLaunch>>('/launches');
   if (statusText !== 'OK') {
     return [];
   }
 
   return data.map((launch) => {
     // Parse to camelCase
-    const rocketData: IRocket = {
+    const rocketData: RocketType = {
       rocketId: launch.rocket.rocket_id,
       rocketName: launch.rocket.rocket_name,
       rocketType: launch.rocket.rocket_type,
@@ -30,18 +30,18 @@ export async function getAllLaunches(): Promise<GetAllLaunchesResponse> {
 }
 
 // Get one launch
-type GetLaunchResponse = ILaunch | null;
+type GetLaunchResponse = LaunchType | null;
 export async function getLaunch(
   flightNumber: number,
 ): Promise<GetLaunchResponse> {
-  const { statusText, data: launch } = await Api.get<IServerLaunch>(
+  const { statusText, data: launch } = await Api.get<ServerLaunch>(
     `/launches/${flightNumber}`,
   );
   if (statusText !== 'OK') {
     return null;
   }
 
-  const rocketData: IRocket = {
+  const rocketData: RocketType = {
     rocketId: launch.rocket.rocket_id,
     rocketName: launch.rocket.rocket_name,
     rocketType: launch.rocket.rocket_type,

@@ -1,11 +1,11 @@
 import Api from './setup';
-import { IServerRocket } from './serverInterfaces';
-import { IRocket } from './apiInterfaces';
+import { ServerRocket } from './server-interfaces/';
+import { RocketType } from 'graphql-types/';
 
 // Get all rockets
-type GetAllRocketsResponse = Array<IRocket> | [];
+type GetAllRocketsResponse = Array<RocketType> | [];
 export async function getAllRockets(): Promise<GetAllRocketsResponse> {
-  const { statusText, data } = await Api.get<Array<IServerRocket>>('/rockets');
+  const { statusText, data } = await Api.get<Array<ServerRocket>>('/rockets');
   if (statusText !== 'OK') {
     return [];
   }
@@ -21,11 +21,11 @@ export async function getAllRockets(): Promise<GetAllRocketsResponse> {
 }
 
 // Get one rocket
-type GetOneRocketResponse = IRocket | null;
+type GetOneRocketResponse = RocketType | null;
 export async function getOneRocket(
   rocketId: string,
 ): Promise<GetOneRocketResponse> {
-  const { statusText, data: rocket } = await Api.get<IServerRocket>(
+  const { statusText, data: rocket } = await Api.get<ServerRocket>(
     `/rockets/${rocketId}`,
   );
 

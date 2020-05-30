@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-RUN yarn install --silent
+RUN yarn --silent
 
 COPY . .
 CMD ["yarn", "start"]
