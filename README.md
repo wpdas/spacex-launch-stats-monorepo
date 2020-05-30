@@ -36,7 +36,17 @@ This is an experimental Monorepo project. The app works handling SpaceX program 
 
 - **./src:** The main server source.
 
-## Commands (using Docker Compose)
+## Commands
+
+### Project
+
+To generate/update the graphql types to be used in the React project, run the following command:
+
+```sh
+yarn update-graphql-types
+```
+
+### Docker (run app)
 
 - Server will run on port 5000: http://localhost:5000
 - Client will run on port 80: http://localhost:80

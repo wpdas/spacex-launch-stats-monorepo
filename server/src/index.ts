@@ -6,8 +6,25 @@ import setupCors from 'config/setupCors';
 const app = express();
 setupCors(app);
 
+// TODO: Must implement a isolated module for handle the error
+// Error handler
+const errorHandler = (
+  err: { status: number },
+  _: unknown,
+  res: any,
+  next: (_: { status: number }) => void,
+) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  const { status } = err;
+  res.status(status).json(err);
+};
+app.use(errorHandler);
+
 const apolloServer = new ApolloServer({
   schema: schemas,
+  introspection: true,
 });
 
 // Add graphql apollo server middleware to express app

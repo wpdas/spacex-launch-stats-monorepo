@@ -1,10 +1,12 @@
-import IRocket from './IRocket';
+import Rocket from './Rocket';
 
-export default interface ILaunch {
+type Launch = {
   readonly flightNumber: number;
   readonly missionName: string;
   readonly launchYear: string;
   readonly launchDateLocal: string;
   readonly launchSuccess: boolean;
-  readonly rocket: IRocket;
-}
+  readonly rocket: Rocket;
+};
+
+export default Launch;
